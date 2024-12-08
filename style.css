@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: cursive;
     margin: 20px;
 }
 #shopping-list {
@@ -9,7 +9,7 @@ body {
 #shopping-list li {
     padding: 10px;
     margin: 5px 0;
-    background-color: #f0f0f0;
+    background-color: rgb(246, 239, 255);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,7 +17,7 @@ body {
 }
 .purchased {
     text-decoration: line-through;
-    background-color: #d3ffd3;
+    background-color: rgb(202, 251, 255);
 }
 input[type="text"] {
     padding: 10px;
@@ -31,12 +31,17 @@ button {
     border-radius: 3px;
     border-width: 1px;
 }
+#add-btn {
+    background-color: rgb(231, 255, 236);
+}
 #clear-btn {
-    background-color: rgba(254, 104, 104, 0.874);
-    color: white;
+    background-color: rgb(255, 220, 226);
 }
 .edit-btn {
-    background-color: rgb(90, 123, 148);
-    padding: 5px;
-    cursor: pointer;
+    background-color: rgb(221, 252, 255);
+    padding: 8px;
+}
+.mark-purchased-btn {
+    background-color: rgb(221, 252, 255);
+    padding: 8px;
 }

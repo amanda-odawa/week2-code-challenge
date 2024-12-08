@@ -16,9 +16,6 @@ function renderList() {
         listItem.textContent = item.text;
         listItem.classList.toggle('purchased', item.purchased);
 
-        // Add "Mark Purchased" functionality
-        listItem.addEventListener('click', () => markAsPurchased(index));
-
         // Add Edit Button
         const editButton = document.createElement('button');
         editButton.textContent = 'Edit';
@@ -28,8 +25,18 @@ function renderList() {
             editItem(index);
         });
 
-        // Append the edit button to the list item
+        // Add Mark Purchased Button
+        const markPurchasedButton = document.createElement('button');
+        markPurchasedButton.textContent = item.purchased ? 'Unmark' : 'Mark Purchased';
+        markPurchasedButton.classList.add('mark-purchased-btn');
+        markPurchasedButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            markAsPurchased(index);
+        });
+
+        // Append the buttons to the list item
         listItem.appendChild(editButton);
+        listItem.appendChild(markPurchasedButton);
 
         // Append the list item to the list container
         listContainer.appendChild(listItem);
