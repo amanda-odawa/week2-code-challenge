@@ -65,11 +65,34 @@ function markAsPurchased(index) {
 
 // Function to edit an existing item
 function editItem(index) {
-    const newText = prompt('Edit item:', shoppingList[index].text);
-    if (newText) {
-        shoppingList[index].text = newText;
-        renderList();  // Re-render the list
-    }
+    const listItem = listContainer.children[index]; // Get the target list item
+    const itemTextSpan = listItem.firstChild; // Reference the text span
+
+    // Create an input box for editing
+    const editInput = document.createElement('input');
+    editInput.type = 'text';
+    editInput.value = shoppingList[index].text;
+    editInput.style.marginRight = '10px';
+
+    // Replace the text with the input box
+    listItem.replaceChild(editInput, itemTextSpan);
+
+    // Change the Edit button to Save
+    const editButton = listItem.querySelector('.edit-btn');
+    editButton.textContent = 'Save';
+
+    // Save the new text on clicking Save
+    editButton.addEventListener(
+        'click',
+        () => {
+            const newText = editInput.value.trim();
+            if (newText) {
+                shoppingList[index].text = newText;
+                renderList(); // Re-render the list to save changes
+            }
+        },
+        { once: true }
+    );
 }
 
 // Function to clear the list
