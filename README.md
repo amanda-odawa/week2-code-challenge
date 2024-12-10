@@ -18,3 +18,25 @@ This challenge combines array iteration, DOM manipulation, and event handling to
 - Unmark items
 - Responsive design for mobile and desktop
 - Beautiful interface
+
+## Demo
+[View Live Demo](https://amanda-odawa.github.io/week2-code-challenge/)
+
+## Installation
+1. **Fork the repository**
+2. **Clone the forked repository**
+    ```bash
+    git clone https://github.com/amanda-odawa/week2-code-challenge.git
+    ```
+3. **Navigate to the project directory**
+    ```bash
+    cd week2-code-challenge
+    ```
+4. **Open index.html in your web browser**
+
+## Usage
+Once the app is running, navigate to it in your browser. 
+You can add items to your Shopping List by typing into the input field and clicking the "Add" button or pressing "Enter" on your keyboard. The list will automatically update with each new item. The list does not accept an empty input.
+You can edit an item by clicking the "Edit" button, and clicking "Save".
+Items can be marked purchased and unmarked by clicking the "Mark Purchased" and "Unmark" buttons, respectively.
+You can clear the entire list by clicking the "Clear List" button.
