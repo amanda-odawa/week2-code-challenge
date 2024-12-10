@@ -26,7 +26,7 @@ body {
 }
 
 input[type="text"] {
-    padding: 5px;
+    padding: 8px;
     flex-grow: 1; 
     margin-right: 10px;
 }
@@ -38,10 +38,12 @@ button {
     border-width: 1px;
 }
 #add-btn {
-    background-color: rgb(231, 255, 236);
+    background-color: rgb(231, 255, 233);
+    padding: 8px;
 }
 #clear-btn {
-    background-color: rgb(255, 220, 226);
+    background-color: rgb(255, 222, 220);
+    padding: 8px;
 }
 .edit-btn {
     background-color: rgb(221, 252, 255);
