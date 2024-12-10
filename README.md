@@ -1,8 +1,20 @@
-## Week 2 Code Challenge : Interractive Shopping List
-This challenge combines array iteration, DOM manipulation, and event handling to create an interactive shopping list application. 
+# Week 2 Code Challenge : Interractive Shopping List
+This challenge combines array iteration, DOM manipulation, and event handling to create an interactive shopping list application. The website uses HTML, CSS and JavaScript to implement the solution.
 
-Users can add items to the list, mark items as purchased, and clear the list. 
+## Table of Contents:
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-Bonus features include editing existing items and saving them, and unmarking purchased items. Persistence using local storage has been implemented, which saves the list even after the page reloads.
-
-### Requirements:
+## Features
+- Add items to the list
+- Clear the list
+- Edit and save existing items
+- Mark items as purchased
+- Unmark items
+- Responsive design for mobile and desktop
+- Beautiful interface
