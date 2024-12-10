@@ -8,7 +8,6 @@ This challenge combines array iteration, DOM manipulation, and event handling to
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
 
 ## Features
 - Add items to the list
@@ -23,16 +22,16 @@ This challenge combines array iteration, DOM manipulation, and event handling to
 [View Live Demo](https://amanda-odawa.github.io/week2-code-challenge/)
 
 ## Installation
-1. **Fork the repository**
-2. **Clone the forked repository**
+1. Fork the repository
+2. Clone the forked repository
     ```bash
     git clone https://github.com/amanda-odawa/week2-code-challenge.git
     ```
-3. **Navigate to the project directory**
+3. Navigate to the project directory
     ```bash
     cd week2-code-challenge
     ```
-4. **Open index.html in your web browser**
+4. Open index.html in your web browser
 
 ## Usage
 Once the app is running, navigate to it in your browser. 
@@ -40,3 +39,23 @@ You can add items to your Shopping List by typing into the input field and click
 You can edit an item by clicking the "Edit" button, and clicking "Save".
 Items can be marked purchased and unmarked by clicking the "Mark Purchased" and "Unmark" buttons, respectively.
 You can clear the entire list by clicking the "Clear List" button.
+
+## Contributing
+Feel free to contribute! Please follow the steps below:
+1. Fork the repository
+2. Create a new branch
+   ```bash
+   git checkout -b Your-Feature-Name
+    ```
+3. Commit your changes
+    ```bash
+    git commit -m 'Add a new feature'
+    ```
+4. Push to the branch
+    ```bash
+    git push origin Your-Feature-Name
+    ```
+5. Open a Pull Request
+
+## License
+*Distributed under the MIT License.*
