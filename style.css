@@ -1,5 +1,51 @@
 body {
     font-family: monospace;
-    margin: 0;
-    
+    margin: 20px;
+    background-color: rgb(255, 251, 243);
+
 }
+#shopping-list {
+    list-style-type: none;
+    padding: 0;
+}
+#shopping-list li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: rgb(246, 239, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+}
+.purchased {
+    text-decoration: line-through;
+    background-color: rgb(202, 251, 255);
+}
+input[type="text"] {
+    padding: 5px;
+    flex-grow: 1; 
+    margin-right: 10px;
+}
+button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    border-width: 1px;
+}
+#add-btn {
+    background-color: rgb(231, 255, 236);
+}
+#clear-btn {
+    background-color: rgb(255, 220, 226);
+}
+.edit-btn {
+    background-color: rgb(221, 252, 255);
+    padding: 8px;
+}
+.mark-purchased-btn {
+    background-color: rgb(221, 252, 255);
+    padding: 8px;
+}
+  
