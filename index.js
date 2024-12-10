@@ -1,116 +1,108 @@
-// Load shopping list from localStorage if available
-let shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-
 // Get references to HTML elements
-const inputField = document.getElementById('item-input');
-const addButton = document.getElementById('add-btn');
-const clearButton = document.getElementById('clear-btn');
-const listContainer = document.getElementById('shopping-list');
+const inputField = document.getElementById("item-input");
+const addButton = document.getElementById("add-btn");
+const clearButton = document.getElementById("clear-btn");
+const listContainer = document.getElementById("shopping-list");
 
-// Function to render the shopping list
+// Shopping list array 
+let shoppingList = [];
+
+// Render the shopping list
 function renderList() {
-    listContainer.innerHTML = ''; // Clear the list container
+    listContainer.innerHTML = ""; // Clear the list
 
     shoppingList.forEach((item, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = item.text;
-        listItem.classList.toggle('purchased', item.purchased);
+        // Create a list item
+        const listItem = document.createElement("li");
 
-        // Add Edit Button
-        const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
-        editButton.classList.add('edit-btn');
-        editButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            editItem(index);
-        });
+        // Create text span
+        const textSpan = document.createElement("span");
+        textSpan.textContent = item.text;
 
-        // Add Mark Purchased Button
-        const markPurchasedButton = document.createElement('button');
-        markPurchasedButton.textContent = item.purchased ? 'Unmark' : 'Mark Purchased';
-        markPurchasedButton.classList.add('mark-purchased-btn');
-        markPurchasedButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            markAsPurchased(index);
-        });
+        // Add purchased class if needed
+        if (item.purchased) {
+            listItem.classList.add("purchased");
+        }
 
-        // Append the buttons to the list item
+        // Edit Button
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.classList.add("edit-btn");
+        editButton.addEventListener("click", () => editItem(index, textSpan));
+
+        // Mark Purchased Button
+        const purchasedButton = document.createElement("button");
+        purchasedButton.textContent = item.purchased ? "Unmark" : "Mark Purchased";
+        purchasedButton.classList.add("mark-purchased-btn");
+        purchasedButton.addEventListener("click", () => togglePurchased(index));
+
+        // Append elements to the list item
+        listItem.appendChild(textSpan);
         listItem.appendChild(editButton);
-        listItem.appendChild(markPurchasedButton);
+        listItem.appendChild(purchasedButton);
 
-        // Append the list item to the list container
+        // Add to the list container
         listContainer.appendChild(listItem);
     });
-
-    // Save the list to localStorage
-    localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
 }
 
-// Function to add a new item
-function addItem() {
+// Add a new item
+function addItem(event) {
+    event.preventDefault(); // Prevent default form submission (if any)
     const itemText = inputField.value.trim();
-    
-    if (itemText) {
-        shoppingList.push({ text: itemText, purchased: false });
-        inputField.value = '';  // Clear the input field after adding the item
-        renderList();  // Re-render the list
+    if (!itemText) {
+        alert("Please enter an item!");
+        return;
     }
+    shoppingList.push({ text: itemText, purchased: false });
+    inputField.value = ""; // Clear input field
+    renderList();
 }
 
-// Function to mark an item as purchased
-function markAsPurchased(index) {
+// Toggle purchased status
+function togglePurchased(index) {
     shoppingList[index].purchased = !shoppingList[index].purchased;
-    renderList();  // Re-render the list
+    renderList();
 }
 
-// Function to edit an existing item
-function editItem(index) {
-    const listItem = listContainer.children[index]; // Get the target list item
-    const itemTextSpan = listItem.firstChild; // Reference the text span
+// Edit an item
+function editItem(index, textSpan) {
+    const currentText = shoppingList[index].text;
+    const editInput = document.createElement("input");
+    editInput.type = "text";
+    editInput.value = currentText;
 
-    // Create an input box for editing
-    const editInput = document.createElement('input');
-    editInput.type = 'text';
-    editInput.value = shoppingList[index].text;
-    editInput.style.marginRight = '10px';
+    // Replace text span with input field
+    textSpan.replaceWith(editInput);
 
-    // Replace the text with the input box
-    listItem.replaceChild(editInput, itemTextSpan);
+    // Add save functionality
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save";
+    saveButton.classList.add("edit-btn");
+    saveButton.addEventListener("click", () => {
+        const newText = editInput.value.trim();
+        shoppingList[index].text = newText || currentText; // Keep old text if empty
+        renderList();
+    });
 
-    // Change the Edit button to Save
-    const editButton = listItem.querySelector('.edit-btn');
-    editButton.textContent = 'Save';
-
-    // Save the new text on clicking Save
-    editButton.addEventListener(
-        'click',
-        () => {
-            const newText = editInput.value.trim();
-            if (newText) {
-                shoppingList[index].text = newText;
-                renderList(); // Re-render the list to save changes
-            }
-        },
-        { once: true }
-    );
+    // Replace Edit button with Save button
+    const listItem = editInput.parentElement;
+    const editButton = listItem.querySelector(".edit-btn");
+    editButton.replaceWith(saveButton);
 }
 
-// Function to clear the list
+// Clear the list
 function clearList() {
     shoppingList = [];
-    renderList();  // Re-render the empty list
+    renderList();
 }
 
 // Attach event listeners
-addButton.addEventListener('click', addItem);
-clearButton.addEventListener('click', clearList);
-
-// Optionally, allow pressing Enter to add item
-inputField.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        addItem();
-    }
+addButton.addEventListener("click", addItem);
+clearButton.addEventListener("click", clearList);
+inputField.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") addItem(event);
 });
 
-// Initial render of the shopping list
+// Initial render
 renderList();
