@@ -86,6 +86,8 @@ function editItem(index, textSpan) {
     saveButton.textContent = "Save";
     saveButton.classList.add("edit-btn");
     saveButton.addEventListener("click", () => {
+        const newText = editInput.value.trim();
+        shoppingList[index].text = newText || currentText; // Keep old text if empty
         renderList();
     });
 
